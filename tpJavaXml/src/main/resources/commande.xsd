@@ -10,7 +10,12 @@ elementFormDefault="qualified">
    <element name="commande" type="tns:Commande" />
  
    <complexType name="Commande">
-		
+		<sequence>
+			<element name="adresse" type="string"/>
+			<element ref="nsp:produit" maxOccurs="unbounded" />
+		</sequence>
+		<attribute name="num" type="positiveInteger" use="required" />
+		<attribute name="date" type="date" use="required" />
   </complexType>
 
 </schema>
