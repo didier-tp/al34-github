@@ -4,10 +4,10 @@
  <xsd:element name="produit" type="Produit" />
  
  <xsd:complexType name="Produit">
-		<xsd:sequence>
+		<xsd:all>
 			<xsd:element name="label" type="xsd:string"/>
 			<xsd:element name="prix" type="xsd:decimal"  />
-		</xsd:sequence>
+		</xsd:all>
 		<xsd:attribute name="ref" type="xsd:string" use="required" />
 </xsd:complexType>
 
