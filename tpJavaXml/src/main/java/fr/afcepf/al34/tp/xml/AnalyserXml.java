@@ -13,18 +13,43 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 public class AnalyserXml {
+	
+	static final String JAXP_SCHEMA_LANGUAGE ="http://java.sun.com/xml/jaxp/properties/schemaLanguage"; 
+	static final String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema"; 
+	
 	public static void main(String[] args) {
 		analyserFichierXml("src/main/resources/produit.xml");
 	}
 	public static void analyserFichierXml(String fileName) {
 		try {
-			DocumentBuilderFactory DocBuilderFactory =  
+			DocumentBuilderFactory docBuilderFactory =  
 					DocumentBuilderFactory.newInstance(); 
-			//DocBuilderFactory.setValidating(true); //valider en tenant compte d'un dtd ou xsd
+			docBuilderFactory.setNamespaceAware(true);
+			docBuilderFactory.setValidating(true); //valider en tenant compte d'un dtd ou xsd
+			docBuilderFactory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA); 
 			/* Fabriquer un parseur DOM: */ 
-			DocumentBuilder docBuilder = DocBuilderFactory.newDocumentBuilder();
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+			docBuilder.setErrorHandler(new ErrorHandler() {
+				@Override
+				public void error(SAXParseException e) throws SAXException {
+					System.err.println(e); 
+					System.err.println("document xml pas valide -- arret du parsing" ); 
+					System.exit(0);
+				}
+				@Override
+				public void fatalError(SAXParseException e) throws SAXException {
+					System.err.println(e); System.exit(0);
+				}
+				@Override
+				public void warning(SAXParseException e) throws SAXException {
+					System.out.println(e);
+				}
+			});
 			/* Déclencher le parsing et récupérer une référence sur l'arbre DOM: */ 
 			Document xmlDoc = docBuilder.parse(fileName);
 			Element docElement = xmlDoc.getDocumentElement();//accès  à la balise principale
@@ -48,6 +73,8 @@ public class AnalyserXml {
 			Element eltCar = xmlDoc.createElement("caracteristique"); //à rattacher
 			docElement.appendChild(eltCar);
 			eltCar.appendChild(xmlDoc.createTextNode("bonne qualite"));
+			//avec <element name="caracteristique" type="string"  minOccurs="0" />
+			//dans produit.xsd
 			
 			//générer un fichier produit2.xml à partir de l'arbre modifié/agrandi:
 			TransformerFactory trFactory = TransformerFactory.newInstance();  
