@@ -17,5 +17,5 @@ elementFormDefault="qualified">
 		<attribute name="num" type="positiveInteger" use="required" />
 		<attribute name="date" type="date" use="required" />
   </complexType>
-
+  
 </schema>

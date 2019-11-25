@@ -11,6 +11,7 @@ elementFormDefault="qualified">
 		<all>
 			<element name="label" type="string"/>
 			<element name="prix" type="decimal"  />
+			<element name="caracteristique" type="string"  minOccurs="0" />
 		</all>
 		<attribute name="ref" type="string" use="required" />
   </complexType>

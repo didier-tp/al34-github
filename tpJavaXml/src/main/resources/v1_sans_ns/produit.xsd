@@ -7,6 +7,7 @@
 		<xsd:all>
 			<xsd:element name="label" type="xsd:string"/>
 			<xsd:element name="prix" type="xsd:decimal"  />
+			<xsd:element name="caracteristique" type="xsd:string"  minOccurs="0" />
 		</xsd:all>
 		<xsd:attribute name="ref" type="xsd:string" use="required" />
 </xsd:complexType>
