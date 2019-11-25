@@ -1,8 +1,12 @@
 package fr.afcepf.al34.tp.json;
 
 import java.io.File;
+import java.io.IOException;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.afcepf.al34.tp.data.Produit;
@@ -10,15 +14,39 @@ import fr.afcepf.al34.tp.data.Produit;
 //(com.fasterxml.)jackson.databind in pom.xml is a medium level json api for java
 
 public class JacksonJsonUtil {
+	
+	public static ObjectMapper jacksonObjectMapper  = new ObjectMapper();
+	
+	static {
+		jacksonObjectMapper.configure(
+				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	}
+	
+	//classe = Produit.class ou Commande.class
+	public static Object parse(String jsonString , Class classe) {
+		Object obj = null;
+		try {
+			obj = jacksonObjectMapper.readValue(jsonString,classe);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return obj;
+	}
+	
+	public static String stringify(Object obj) {
+		String jsonString=null;
+		try {
+			jsonString= jacksonObjectMapper.writeValueAsString(obj);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return jsonString;
+	}
 
 	public static void demoJsonJavaViaJacksonObjectMapper() {
 		System.out.println("demoJsonJavaViaJacksonObjectMapper");
 		try {
-		ObjectMapper jacksonObjectMapper  = new ObjectMapper();
-		jacksonObjectMapper.configure(
-				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		
-			
+	
 		Produit p1 = new Produit("p1","gomme",2.3);
 		System.out.println("p1:"+p1);//p1:Produit [ref=p1, label=gomme, prix=2.3]
 		String p1AsJsonString = jacksonObjectMapper.writeValueAsString(p1);
