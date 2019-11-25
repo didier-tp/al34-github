@@ -21,7 +21,6 @@ public class AnalyserXml {
 	
 	static final String JAXP_SCHEMA_LANGUAGE ="http://java.sun.com/xml/jaxp/properties/schemaLanguage"; 
 	static final String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema"; 
-	
 	public static void main(String[] args) {
 		analyserFichierXml("src/main/resources/produit.xml");
 	}
@@ -35,17 +34,13 @@ public class AnalyserXml {
 			/* Fabriquer un parseur DOM: */ 
 			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 			docBuilder.setErrorHandler(new ErrorHandler() {
-				@Override
 				public void error(SAXParseException e) throws SAXException {
-					System.err.println(e); 
-					System.err.println("document xml pas valide -- arret du parsing" ); 
+					System.err.println(e);	System.err.println("document xml pas valide -- arret du parsing"); 
 					System.exit(0);
 				}
-				@Override
 				public void fatalError(SAXParseException e) throws SAXException {
 					System.err.println(e); System.exit(0);
 				}
-				@Override
 				public void warning(SAXParseException e) throws SAXException {
 					System.out.println(e);
 				}
@@ -53,6 +48,7 @@ public class AnalyserXml {
 			/* Déclencher le parsing et récupérer une référence sur l'arbre DOM: */ 
 			Document xmlDoc = docBuilder.parse(fileName);
 			Element docElement = xmlDoc.getDocumentElement();//accès  à la balise principale
+			System.out.println("namespace=" + docElement.getNamespaceURI());
 			String valeurAttributRef = docElement.getAttribute("ref");
 			System.out.println("valeurAttributRef="+valeurAttributRef);
 			NodeList nodeList = docElement.getChildNodes();
