@@ -6,6 +6,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import fr.afcepf.al34.tp.data.Commande;
 import fr.afcepf.al34.tp.data.Produit;
 
@@ -25,6 +27,9 @@ public class AnalyserXmlViaJaxb2 {
 			
 			Commande c = (Commande) um.unmarshal( new File( fileName ) );
 			System.out.println(c);
+			
+			ObjectMapper objectMapper = new ObjectMapper(); //de jackson
+			objectMapper.writeValue(new File("src/main/resources/commande.json"),c);
 			
 			Marshaller m = jctx.createMarshaller();// pour ecrire
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
