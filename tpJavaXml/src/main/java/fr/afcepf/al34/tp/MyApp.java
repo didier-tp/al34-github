@@ -19,8 +19,10 @@ public class MyApp {
 		String p1AsJsonString = JacksonJsonUtil.stringify(p1);
 		System.out.println(p1AsJsonString);
 		
-		String p2AsJsonString = "{'ref':'p2' , 'label':'cahier' , 'comment': 'cc' }".replace('\'', '\"');
-		Produit p2 = (Produit) JacksonJsonUtil.parse(p2AsJsonString,Produit.class);
+		//NB: chaine json volontairement sans prix et avec comment n'existant pas sur Produit.java :
+		String p2AsJsonString = "{'ref':'p2' , 'label':'cahier' , 'comment': 'cc' }"
+				                .replace('\'', '\"');
+		Produit p2 = JacksonJsonUtil.parse(p2AsJsonString,Produit.class);
 		System.out.println(p2.toString());
 	}
 

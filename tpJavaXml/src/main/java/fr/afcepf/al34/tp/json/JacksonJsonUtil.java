@@ -23,8 +23,8 @@ public class JacksonJsonUtil {
 	}
 	
 	//classe = Produit.class ou Commande.class
-	public static Object parse(String jsonString , Class classe) {
-		Object obj = null;
+	public static <T>  T parse(String jsonString , Class<T> classe) {
+		T obj = null;
 		try {
 			obj = jacksonObjectMapper.readValue(jsonString,classe);
 		} catch (Exception e) {
