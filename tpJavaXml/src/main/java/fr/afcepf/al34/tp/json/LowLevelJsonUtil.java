@@ -43,7 +43,14 @@ public class LowLevelJsonUtil {
 		        .build();	
 		
 		System.out.println(jsonObject1.toString());
-		
+		/*
+		{"firstName":"jean","lastName":"Bon","size":180.0,"mad":true,
+		  "address":{"street":"12, rue qui va bien","city":"Paris"},
+		  "phones":["0102030405","0605040302"],
+		  "friends":[{"firstName":"olie","lastName":"Condor"},
+		             {"firstName":"alex","lastName":"Therieur"}]
+		}
+		*/
 		//============================================
 		
 		Map<String,Object> submapAdr = new HashMap<>();
@@ -58,7 +65,12 @@ public class LowLevelJsonUtil {
 		
 		JsonObject jsonObject2FromMap= Json.createObjectBuilder(mapPers).build();
 		System.out.println(jsonObject2FromMap.toString());
-		
+		/*
+		 {"firstName":"alain","lastName":"Therieur",
+		   "address":{"city":"Lyon","street":"13, rue Elle"},
+		   "age":40
+		  }
+		 */
 	}
 	
 }
