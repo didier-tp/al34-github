@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //l'api JAXB2 est utilisé en interne par l'api JAX-WS (Web service Soap)
 
 //annotations de JAXB2 (package "javax.xml.bind..." et @Xml...() 
@@ -29,7 +31,7 @@ public class Commande {
 	private String adresse;
 	
 	@XmlElement(name="produit" , namespace = Produit.PROD_NAMESPACE)
-	//???
+	//@JsonIgnore
 	private Collection<Produit> produits;
 	
 	public Commande() {

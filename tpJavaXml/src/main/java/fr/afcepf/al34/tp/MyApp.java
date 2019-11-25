@@ -1,5 +1,9 @@
 package fr.afcepf.al34.tp;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.afcepf.al34.tp.data.Commande;
 import fr.afcepf.al34.tp.data.Produit;
 import fr.afcepf.al34.tp.json.JacksonJsonUtil;
 import fr.afcepf.al34.tp.json.LowLevelJsonUtil;
@@ -24,6 +28,21 @@ public class MyApp {
 				                .replace('\'', '\"');
 		Produit p2 = JacksonJsonUtil.parse(p2AsJsonString,Produit.class);
 		System.out.println(p2.toString());
+		
+		Commande c = new Commande();
+		c.setNum(2); c.setDate("2019-11-25");
+		c.setAdresse("12 rue elle");
+		List<Produit> listeProduits = new ArrayList<>();
+		listeProduits.add(p2);
+		listeProduits.add(p1);
+		c.setProduits(listeProduits);
+		System.out.println("commande java:" + c.toString());
+		
+		String cAsJsonString = JacksonJsonUtil.stringify(c); 
+		//à tester avec ou sans @JsonIgnore
+		//au dessus de produits dans Commande.java
+		
+		System.out.println("commande json:" + cAsJsonString);
 	}
 
 }
