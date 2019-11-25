@@ -10,18 +10,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 //annotations de JAXB2 (package "javax.xml.bind..." et @Xml...() 
 //JAXB2 est intégré dans la JVM à partir de java 6 (==> java 1.8 dans pom.xml)
-@XmlRootElement(name = "produit", namespace = "http://www.example.org/produit")
+@XmlRootElement(name = "produit", namespace = Produit.PROD_NAMESPACE)
 @XmlAccessorType(XmlAccessType.FIELD) //pour demander à analyser les @Xml...()
                                       //au dessus des FIELD (souvent private)
 public class Produit {
 	
+	public static final String PROD_NAMESPACE="http://www.example.org/produit";
+	
 	@XmlAttribute(name = "ref")
 	private String ref;
 	
-	@XmlElement(name="label")
+	@XmlElement(name="label" , namespace = PROD_NAMESPACE)
 	private String label;
 	
-	@XmlElement(name="prix")
+	@XmlElement(name="prix" , namespace = PROD_NAMESPACE)
 	private Double prix;
 	
 	public Produit() {
