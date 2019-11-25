@@ -1,10 +1,8 @@
 package fr.afcepf.al34.tp.json;
 
-import java.io.IOException;
+import java.io.File;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.afcepf.al34.tp.data.Produit;
@@ -19,12 +17,14 @@ public class JacksonJsonUtil {
 		ObjectMapper jacksonObjectMapper  = new ObjectMapper();
 		jacksonObjectMapper.configure(
 				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		
 			
 		Produit p1 = new Produit("p1","gomme",2.3);
 		System.out.println("p1:"+p1);//p1:Produit [ref=p1, label=gomme, prix=2.3]
 		String p1AsJsonString = jacksonObjectMapper.writeValueAsString(p1);
 		System.out.println("p1AsJsonString:"+p1AsJsonString);
 		//p1AsJsonString:{"ref":"p1","label":"gomme","prix":2.3}
+		jacksonObjectMapper.writeValue(new File("src/main/resources/p1.json"),p1);
 		
 		
 		String p2AsJsonString = "{'ref':'p2' , 'label':'cahier' , 'prix':3.3 }".replace('\'', '\"');
