@@ -8,6 +8,17 @@
 <title>Tous les Users</title>
 </head>
 <body>
-
+    <h3>liste des users</h3>
+    <h:dataTable border="1" var="u" value="#{mbConnect.userList}">
+        <h:column>
+           <h:outputText value="#{u.id}" />
+        </h:column>
+        <h:column>
+           <h:outputText value="#{u.login}" />
+        </h:column>
+        <h:column>
+           <h:outputText value="#{u.password}" />
+        </h:column>
+    </h:dataTable>
 </body>
 </html>
