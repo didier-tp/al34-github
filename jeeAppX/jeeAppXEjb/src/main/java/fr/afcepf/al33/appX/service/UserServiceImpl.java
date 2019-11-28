@@ -17,7 +17,7 @@ import fr.afcepf.al33.appX.entity.User;
 public class UserServiceImpl implements UserService {
 	
 	@EJB //depuis EJB 3.0
-	//@Inject //depuis EJB3.1 necessite META-INF/beans.xml
+	//@Inject //depuis EJB3.1 necessite idealement  META-INF/beans.xml
 	private UserDao userDao;
 
 	@Override

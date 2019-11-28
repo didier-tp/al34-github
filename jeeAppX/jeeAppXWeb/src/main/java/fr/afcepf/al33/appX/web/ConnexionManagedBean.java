@@ -3,8 +3,8 @@ package fr.afcepf.al33.appX.web;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import fr.afcepf.al33.appX.entity.User;
@@ -13,16 +13,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named("mbConnect") //ou bien @ManagedBean("mbConnect")
-@SessionScoped //en viersion entreprise/cdi ou bien jsf/faces
+@SessionScoped //en version entreprise/cdi ou bien jsf/faces
 @Getter @Setter
 public class ConnexionManagedBean implements Serializable{
-	@EJB //depuis EJB 3.0
-	//ou bien @Inject 
+	//@EJB //depuis EJB 3.0
+	@Inject //possible à la place de @EJB si WEB-INF/beans.xml est present
 	private UserService ejbUserService;
 	
 	private List<User> userList; //pour <h:dataTable coté .xhtml
 
 	private User user; //à saisir
+	private String message;
 	
 	public ConnexionManagedBean() {
 		super();
@@ -36,8 +37,13 @@ public class ConnexionManagedBean implements Serializable{
 	}
 	
 	public String createUser() {
-		System.out.println("user " + user.getLogin() + "ajouté");
-		return "ajouterUser.xhtml";
+		message="";
+		user.setId(null);//NB: mbConnect.user est réutilisé car @SessionScoped sur mbConnect
+		user=ejbUserService.createUser(user);
+		message="user " + user.getLogin() + "ajouté avec id="+user.getId();
+		System.out.println(message);
+		//return "ajouterUser.xhtml";
+		return null; //rester sur meme page
 	}
 
 	
