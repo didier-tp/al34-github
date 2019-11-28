@@ -5,7 +5,7 @@
 	        à configurer dans le serveur d'application JEE
 	        C:\serveurs\jboss-eap-7.2\standalone\configuration\standalone.xml
 	        -->
-	  <jta-data-source>???</jta-data-source> 
+	  <jta-data-source>java:jboss/datasources/UserDS</jta-data-source> 
 	  <!-- paramétrage indirect de la connection à la base de données -->  
 	  
 	  <properties>
