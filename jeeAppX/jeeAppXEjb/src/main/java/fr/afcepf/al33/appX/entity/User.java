@@ -19,7 +19,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto_incr coté base
 	private Integer id;
 	
-	@Column(name="username")
+	@Column(name="nom")
 	private String login;
 	
 	//@Column(name="password") par défaut
