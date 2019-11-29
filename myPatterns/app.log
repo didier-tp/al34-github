@@ -1,1 +1,10 @@
 11:26:09.981 [main] INFO  fr.afcepf.al34.logger.GoodLogger - essai log
+12:03:05.340 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+12:04:03.297 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+12:04:34.161 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+12:04:52.566 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+12:04:52.566 [main] INFO  fr.afcepf.al34.logger.GoodLogger - addition(5,6)=11
+12:04:52.566 [main] INFO  fr.afcepf.al34.logger.GoodLogger - multiplication(5,6)=30
+12:07:29.987 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+12:07:30.020 [main] INFO  fr.afcepf.al34.logger.GoodLogger - addition(5,6)=11
+12:07:30.035 [main] INFO  fr.afcepf.al34.logger.GoodLogger - multiplication(5,6)=30
