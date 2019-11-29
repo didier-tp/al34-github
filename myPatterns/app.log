@@ -27,3 +27,15 @@
 14:18:23.598 [main] INFO  fr.afcepf.al34.logger.GoodLogger - addition(5,6)=11
 14:18:23.598 [main] INFO  fr.afcepf.al34.logger.GoodLogger - multiplication(5,6)=30
 14:23:18.477 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:02:20.373 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:06:11.435 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:06:45.972 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:06:45.972 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - injection au sein de fr.afcepf.al34.calculateur.CalculateurAvecLog
+15:11:36.182 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:11:36.198 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - injection au sein de fr.afcepf.al34.calculateur.CalculateurAvecLog
+15:11:36.199 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=myLogger
+15:11:36.199 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=commentaireQuiVaBien
+15:14:21.467 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - injection au sein de fr.afcepf.al34.calculateur.CalculateurAvecLog
+15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=myLogger de type MyLogger
+15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=commentaireQuiVaBien de type String

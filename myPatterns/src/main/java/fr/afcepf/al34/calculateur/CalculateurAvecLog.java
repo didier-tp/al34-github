@@ -13,7 +13,9 @@ public class CalculateurAvecLog implements Calculateur {
 	//va demander à initialiser la chose (ici myLogger) de façon
 	//à ce que ça référence un composant compatible avec l'interface précisée
 	//(ici MyLogger)
-	MyLogger myLogger=null;
+	private MyLogger myLogger=null;
+	
+	private String commentaireQuiVaBien="you know what , i am happy";
 	
 	//@MyInject
 	//I2 ref2=null;
