@@ -32,7 +32,8 @@ private static Logger logger = LoggerFactory.getLogger(MegaFactory.class);
 			Calculateur calculateur =null;
 			if(calculateurImplClassName ==null) {
 				calculateurImplClassName 
-			       = MyPropertiesUtil.propertyValueFromEntryOfPropertyFile("megaFactory.properties","calculateur");
+			       = MyPropertiesUtil.propertyValueFromEntryOfPropertyFile(
+			    		   "megaFactory.properties","fr.afcepf.al34.calculateur.Calculateur");
 			}
 			try {
 				calculateur = (Calculateur) Class.forName(calculateurImplClassName).newInstance();
@@ -45,7 +46,8 @@ private static Logger logger = LoggerFactory.getLogger(MegaFactory.class);
 	public MyLogger createLogger() {
 		MyLogger mylogger =null;
 		if(myloggerImplClassName == null) {
-			myloggerImplClassName = MyPropertiesUtil.propertyValueFromEntryOfPropertyFile("megaFactory.properties","myLogger");
+			myloggerImplClassName = MyPropertiesUtil.propertyValueFromEntryOfPropertyFile(
+					"megaFactory.properties","fr.afcepf.al34.logger.MyLogger");
 		}
 		try {
 			mylogger = (MyLogger) Class.forName(myloggerImplClassName).newInstance();
