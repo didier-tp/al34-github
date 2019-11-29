@@ -55,7 +55,20 @@ private static Logger logger = LoggerFactory.getLogger(MegaFactory.class);
 			e.printStackTrace();
 		} 
 		return mylogger;
-}
+	}
+	
+	//MegaFactory.getInstance().create(Calculateur.class);
+	public <T> T create(Class<T> interfaceType) {
+		T instance =null;
+		String	implClassName = MyPropertiesUtil.propertyValueFromEntryOfPropertyFile(
+					"megaFactory.properties",interfaceType.getName());
+		try {
+			instance = (T) Class.forName(implClassName).newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return instance;
+	}
 	
 
 }
