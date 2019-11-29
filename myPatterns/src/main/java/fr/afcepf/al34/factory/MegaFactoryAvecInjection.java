@@ -23,13 +23,14 @@ public class MegaFactoryAvecInjection extends MegaFactory {
 			logger.trace("\t attribut=" + f.getName() + " de type " + f.getType().getSimpleName());
 			MyInject annotMyInject = f.getAnnotation(MyInject.class);
 			if(annotMyInject!=null) {
-				Class typeDeF = f.getType();
+				Class typeDeF = f.getType();//ici = nom d'interface
 				Object instance = MegaFactory.getInstance().create(typeDeF);
 				//plus qu'a affecter instance en tant que nouvelle valeur de f
 				//problème à régler : f est souvent "private"
 				f.setAccessible(true);
 				try {
-					f.set(obj, instance);
+					f.set(obj, instance);//demander à changer la valeur de l'attribut 
+					                     // f dans l'objet "obj"
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
