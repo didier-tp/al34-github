@@ -24,7 +24,7 @@ private static Logger logger = LoggerFactory.getLogger(MegaFactory.class);
 		return uniqueInstance;
 	}
 	
-	private MegaFactory() {
+	protected MegaFactory() {
 		
 	}
 	
