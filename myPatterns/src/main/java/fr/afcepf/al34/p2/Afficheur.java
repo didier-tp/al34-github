@@ -4,11 +4,11 @@ import javax.swing.JOptionPane;
 
 public class Afficheur {
 	
-	private Preferences preferences;
+	private Preferences preferences = new Preferences();//avec titre et préfixe par défaut
 	
 	private ContextAffichage contextAffichage; //interface 	abstraite (ressemble XyListener)
 	
-	
+		
 	//méthode d'enregistrement (ressemble à addXyListener)
 	public void setContextAffichage(ContextAffichage contextAffichage) {
 		this.contextAffichage = contextAffichage;
