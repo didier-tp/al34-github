@@ -2,16 +2,20 @@ package fr.afcepf.al34.p2;
 
 import javax.swing.JOptionPane;
 
-import fr.afcepf.al34.p1.MyAppP1;
-
 public class Afficheur {
 	
 	private Preferences preferences;
 	
-	public Afficheur(MyAppP1 myAppP1) {
-		this.preferences=myAppP1.getPreferences();
-	}
+	private ContextAffichage contextAffichage; //interface 	abstraite (ressemble XyListener)
 	
+	
+	//méthode d'enregistrement (ressemble à addXyListener)
+	public void setContextAffichage(ContextAffichage contextAffichage) {
+		this.contextAffichage = contextAffichage;
+		this.preferences = this.contextAffichage.getPreferences();
+	}
+
+
 	public void afficher(Object obj) {
 		//System.out.println(obj.toString());
 		JOptionPane.showMessageDialog(null, 
