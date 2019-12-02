@@ -22,11 +22,11 @@ public abstract class CalculateurDecorateur implements Calculateur{
 		this.calculateur = calculateur;
 	}
 
-	public final Calculateur getCalculateur() {
+	public  Calculateur getCalculateur() {
 		return calculateur;
 	}
 
-	public final void setCalculateur(Calculateur calculateur) {
+	public  void setCalculateur(Calculateur calculateur) {
 		this.calculateur = calculateur;
 	}
 	

@@ -39,3 +39,7 @@
 15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - injection au sein de fr.afcepf.al34.calculateur.CalculateurAvecLog
 15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=myLogger de type MyLogger
 15:14:21.467 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=commentaireQuiVaBien de type String
+09:31:34.910 [main] DEBUG fr.afcepf.al34.factory.MegaFactory - uniqueInstance=fr.afcepf.al34.factory.MegaFactory@6043cd28
+09:31:34.925 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - injection au sein de fr.afcepf.al34.calculateur.CalculateurAvecLog
+09:31:34.925 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=myLogger de type MyLogger
+09:31:34.925 [main] TRACE fr.afcepf.al34.factory.MegaFactoryAvecInjection - 	 attribut=commentaireQuiVaBien de type String
