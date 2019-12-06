@@ -36,10 +36,20 @@ public class Film {
 	@Column(name="date_sortie")
 	@Temporal(TemporalType.DATE) //date sans heure
 	private Date dateSortie;
+	
+	
 
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", titre=" + titre + ", dateSortie=" + dateSortie + "]";
+	}
+
+
+	public Film(Long id, String titre, Date dateSortie) {
+		super();
+		this.id = id;
+		this.titre = titre;
+		this.dateSortie = dateSortie;
 	}
 	
 	
