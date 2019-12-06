@@ -1,7 +1,7 @@
 
 REM set MVN_REPOSITORY=C:\ext\mvn-repository
-set MVN_REPOSITORY=C:\Users\didier\.m2\repository
-REM set MVN_REPOSITORY=C:\Users\formation\.m2\repository
+REM set MVN_REPOSITORY=C:\Users\didier\.m2\repository
+set MVN_REPOSITORY=C:\Users\formation\.m2\repository
 
 set MY_H2_DB_URL=jdbc:h2:~/devise_db
 
