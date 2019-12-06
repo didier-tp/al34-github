@@ -1,5 +1,6 @@
 package tp.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,14 @@ public class Film {
 	@JoinTable(name = "film_producteur",
 		joinColumns = {@JoinColumn(name="id_film")},
 		inverseJoinColumns = {@JoinColumn(name="id_producteur")})
-	private List<Producteur> producteurs;
+	private List<Producteur> producteurs ;
+	
+	public void addProducteur(Producteur p) {
+		if(this.producteurs==null) {
+			this.producteurs = new ArrayList<>();
+		}
+		producteurs.add(p);
+	}
 
 	@Override
 	public String toString() {
