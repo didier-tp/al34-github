@@ -59,13 +59,23 @@ public class FilmDaoJpa implements FilmDao {
 	            .getResultList();
 	}
 
-	@Override
-	public Film findFilmByIdWithProductors(Long id) {
+	
+	public Film findFilmByIdWithProductorsV1(Long id) {
 		Film f  = this.findById(id);
+		/*
 		for(Producteur p : f.getProducteurs()) {
 			//boucle for/forEach pour remonter les éléments du collection LAZY
-		}
+		}*/
+		f.getProducteurs().size(); //boucle for interne pour connaitre la taille (solution au LAZY)
 		return f;
+	}
+	
+	@Override
+	public Film findFilmByIdWithProductors(Long id) {
+		String jpaQuery ="SELECT f FROM Film f INNER JOIN fetch f.producteurs p  WHERE f.id=:id";
+		return entityManager.createQuery(jpaQuery, Film.class)
+				.setParameter("id", id)
+				.getSingleResult();
 	}
 
 }
