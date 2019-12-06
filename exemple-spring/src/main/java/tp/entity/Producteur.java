@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,9 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
+@NamedQueries({
+	@NamedQuery(name = "Producteur.findAll" , query = "SELECT p FROM Producteur p")
+})
 public class Producteur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
