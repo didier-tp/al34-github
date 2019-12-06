@@ -5,11 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.entity.Film;
+import tp.entity.Producteur;
 
 @Repository
 @Transactional //de Spring
@@ -57,6 +57,15 @@ public class FilmDaoJpa implements FilmDao {
 		return entityManager.createNamedQuery("Film.findByTitre", Film.class)
 				.setParameter("titre", titre) //pour remplacer :titre dans requete
 	            .getResultList();
+	}
+
+	@Override
+	public Film findFilmByIdWithProductors(Long id) {
+		Film f  = this.findById(id);
+		for(Producteur p : f.getProducteurs()) {
+			//boucle for/forEach pour remonter les éléments du collection LAZY
+		}
+		return f;
 	}
 
 }

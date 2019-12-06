@@ -17,4 +17,6 @@ public interface FilmDao {
 		public void deleteById(Long id);
 		
 		public List<Film> findByTitre(String titre);
+		
+		public Film findFilmByIdWithProductors(Long id);
 }

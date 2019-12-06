@@ -54,10 +54,12 @@ public class TestDaoFilm {
 		System.out.println("listeFilms="+listeFilms) ;
 		Assert.assertTrue(listeFilms.size()>=2);
 		
-		Film fbRelu = filmDao.findById(fb.getId());
+		//Film fbRelu = filmDao.findById(fb.getId());
+		Film fbRelu = filmDao.findFilmByIdWithProductors(fb.getId());
 		System.out.println("fbRelu="+fbRelu);
+		
 		for(Producteur prod : fbRelu.getProducteurs()) {
-			//à priori LAZY exception
+			//avec ou sans  LAZY exception
 			System.out.println("producteur associe a fbRelu : " + prod.toString());
 		}
 	}
