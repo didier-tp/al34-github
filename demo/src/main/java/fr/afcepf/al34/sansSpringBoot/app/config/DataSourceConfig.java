@@ -1,4 +1,4 @@
-package fr.afcepf.al34.demo.app.config;
+package fr.afcepf.al34.sansSpringBoot.app.config;
 
 import javax.sql.DataSource;
 
