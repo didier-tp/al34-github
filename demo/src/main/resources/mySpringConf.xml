@@ -10,6 +10,8 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd" >
 
+<!--  V1 : config 100% XML sans annotation -->
+<!-- 
 <bean id="blagueDaoImpl" class="fr.afcepf.al34.demo.dao.BlagueDaoImpl"> 
 </bean>
 
@@ -17,8 +19,9 @@ http://www.springframework.org/schema/context/spring-context.xsd" >
       class="fr.afcepf.al34.demo.business.BlagueServiceImpl">
       <property name="blagueDao" ref="blagueDaoImpl" />
 </bean>
-
-
+-->
+<!--  V2 : config XML avec annotation , depuis Spring 2.5 / 2007 environ -->
 <context:annotation-config/>
+<context:component-scan base-package="fr.afcepf.al34.demo"></context:component-scan>
 
 </beans>

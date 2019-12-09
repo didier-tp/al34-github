@@ -13,15 +13,16 @@ public class MySpringApp {
 		//en mode "pas automatique , sans spring-boot":
 		
 		//V1 : entièrement XML (environ 2005)
+		//V2 : config xml + annotations (environ 2010)
 		ApplicationContext contextSpring =
 				new ClassPathXmlApplicationContext("mySpringConf.xml");
-		BlagueService s = (BlagueService) 
-				 contextSpring.getBean("blagueServiceImpl" /*id*/);
+		//BlagueService s = (BlagueService) 
+		//		 contextSpring.getBean("blagueServiceImpl" /*id*/);
+		BlagueService s = contextSpring.getBean(BlagueService.class);
 		Blague b = s.rechercherBlagueParId(1L);
 		System.out.println(b.toString());
 		((ClassPathXmlApplicationContext)contextSpring).close();
 		
-		//V2 : config xml + annotations (environ 2010)
 		
 		//V3 : config java + annotations (environ 2015)
 		

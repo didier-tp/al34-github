@@ -1,7 +1,11 @@
 package fr.afcepf.al34.demo.dao;
 
+import org.springframework.stereotype.Repository;
+
 import fr.afcepf.al34.demo.entity.Blague;
 
+//@Component
+@Repository //id par defaut = blagueDaoImpl
 public class BlagueDaoImpl implements BlagueDao {
 
 	@Override
