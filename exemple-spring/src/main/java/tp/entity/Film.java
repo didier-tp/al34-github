@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,6 +49,9 @@ public class Film {
 		joinColumns = {@JoinColumn(name="id_film")},
 		inverseJoinColumns = {@JoinColumn(name="id_producteur")})
 	private List<Producteur> producteurs ;
+	
+	@OneToMany(mappedBy="film") 
+	private List<RoleActeurFilm> rolesActeurs ; 
 	
 	public void addProducteur(Producteur p) {
 		if(this.producteurs==null) {
