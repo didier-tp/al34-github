@@ -2,7 +2,7 @@ package fr.afcepf.al34.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import fr.afcepf.al34.demo.business.BlagueService;
 import fr.afcepf.al34.demo.entity.Blague;
@@ -17,12 +17,15 @@ import fr.afcepf.al34.demo.entity.Blague;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		/*Configurable*/ApplicationContext contextSpring =
-				SpringApplication.run(DemoApplication.class, args);
-		Blague b1 = new Blague(null,"blague1", "blague pas drole");
+		//SpringApplication.run(MySpringBootApplication.class, args);
+		SpringApplication app = new SpringApplication(DemoApplication.class);
+		app.setAdditionalProfiles("initData","profile2ComplementaireQueJaimeEtQuiExistePasEncore");
+		ConfigurableApplicationContext contextSpring = app.run(args);
+		
+		//Blague b1 = new Blague(null,"blague1", "blague pas drole");
 		BlagueService s = contextSpring.getBean(BlagueService.class);
-		s.sauvegarderBlague(b1);
-		Blague b = s.rechercherBlagueParId(b1.getId());
+		//s.sauvegarderBlague(b1);
+		Blague b = s.rechercherBlagueParId(/*b1.getId()*/ 1L );
 		System.out.println(b.toString());
 		//+close() idealement
 	}

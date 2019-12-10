@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 //@Component
 @Service //id par defaut = blagueServiceImpl
+@Transactional
 public class BlagueServiceImpl implements BlagueService {
 	
 	@Autowired //demander à injecter/référencer un composant Spring
@@ -43,7 +44,7 @@ public class BlagueServiceImpl implements BlagueService {
 
 	@Override
 	//@Transactional(propagation = Propagation.REQUIRED) //par défaut avec Spring et EJB
-	@Transactional()
+	//@Transactional()
 	public void transfererNote(int nbPoints, Long idb1, Long idb2) {
 	    try {
 			Blague b1 = blagueDao.findById(idb1).get();
