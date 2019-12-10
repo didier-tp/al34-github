@@ -33,4 +33,9 @@ public class BlagueServiceImpl implements BlagueService {
 		return blagueDao.findById(id);
 	}
 
+	@Override
+	public Blague sauvegarderBlague(Blague b) {
+		return blagueDao.save(b);
+	}
+
 }

@@ -19,8 +19,10 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		/*Configurable*/ApplicationContext contextSpring =
 				SpringApplication.run(DemoApplication.class, args);
+		Blague b1 = new Blague(null,"blague1", "blague pas drole");
 		BlagueService s = contextSpring.getBean(BlagueService.class);
-		Blague b = s.rechercherBlagueParId(1L);
+		s.sauvegarderBlague(b1);
+		Blague b = s.rechercherBlagueParId(b1.getId());
 		System.out.println(b.toString());
 		//+close() idealement
 	}

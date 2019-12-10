@@ -4,4 +4,5 @@ import fr.afcepf.al34.demo.entity.Blague;
 
 public interface BlagueService {
 	Blague rechercherBlagueParId(Long id);
+	Blague sauvegarderBlague(Blague b);
 }
