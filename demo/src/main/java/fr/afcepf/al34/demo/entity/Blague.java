@@ -19,16 +19,22 @@ public class Blague {
 	private String titre;
 	private String texte;
 	
-	@Override
-	public String toString() {
-		return "Blague [id=" + id + ", titre=" + titre + ", texte=" + texte + "]";
-	}
+	private Integer note;//null ou de 0 à 5 (0 : nulle , 1 : pas drôle , 5 : très drôle)
+	
+	
 
 	public Blague(Long id, String titre, String texte) {
 		super();
 		this.id = id;
 		this.titre = titre;
 		this.texte = texte;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Blague [id=" + id + ", titre=" + titre + ", texte=" + texte + ", note=" + note + "]";
 	}
 	
 
