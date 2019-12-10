@@ -19,6 +19,8 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		//SpringApplication.run(MySpringBootApplication.class, args);
 		SpringApplication app = new SpringApplication(DemoApplication.class);
+		//on peut depuis un .bat ou .sh qui lance l'application java SpringBoot
+		// java .... -Dspring.profiles.active="initData" 
 		app.setAdditionalProfiles("initData","profile2ComplementaireQueJaimeEtQuiExistePasEncore");
 		ConfigurableApplicationContext contextSpring = app.run(args);
 		
