@@ -40,7 +40,7 @@ public class BlagueServiceImpl implements BlagueService {
 	}
 
 	@Override
-	//@Transactional
+	@Transactional
 	public void transfererNote(int nbPoints, Long idb1, Long idb2) {
 	    Blague b1 = blagueDao.findById(idb1);
 	    b1.setNote(b1.getNote()-nbPoints);
