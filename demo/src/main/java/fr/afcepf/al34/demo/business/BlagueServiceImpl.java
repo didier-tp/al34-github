@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al34.demo.dao.BlagueDao;
@@ -40,17 +41,23 @@ public class BlagueServiceImpl implements BlagueService {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional(propagation = Propagation.REQUIRED) //par défaut avec Spring et EJB
+	@Transactional()
 	public void transfererNote(int nbPoints, Long idb1, Long idb2) {
-	    Blague b1 = blagueDao.findById(idb1);
-	    b1.setNote(b1.getNote()-nbPoints);
-	    if(b1.getNote()<0) throw new RuntimeException("note inférieure à zero invalide");
-	    blagueDao.save(b1); //indispensable seulement si pas de @Transactional
-	    
-	    Blague b2 = blagueDao.findById(idb2);
-	    b2.setNote(b2.getNote()+nbPoints);
-	    if(b2.getNote()>5) throw new RuntimeException("note supérieure à 5 invalide");
-	    blagueDao.save(b2); //indispensable seulement si pas de @Transactional
+	    try {
+			Blague b1 = blagueDao.findById(idb1);
+			b1.setNote(b1.getNote()-nbPoints);
+			if(b1.getNote()<0) throw new RuntimeException("note inférieure à zero invalide");
+			//blagueDao.save(b1); //indispensable seulement si pas de @Transactional
+			
+			Blague b2 = blagueDao.findById(idb2);
+			b2.setNote(b2.getNote()+nbPoints);
+			if(b2.getNote()>5) throw new RuntimeException("note supérieure à 5 invalide");
+			//blagueDao.save(b2); //indispensable seulement si pas de @Transactional
+		} catch (Exception e) {
+			//logger.error(...);
+			throw new RuntimeException("echec transfererNote",e);
+		}
 	}
 
 }
