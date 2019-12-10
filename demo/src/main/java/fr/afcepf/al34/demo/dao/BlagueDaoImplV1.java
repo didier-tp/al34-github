@@ -8,10 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al34.demo.entity.Blague;
 
+
+//DAO Générique :
+// sans Spring-data : https://github.com/didier-mycontrib/jee-spring-app-demo/blob/master/minibank2015/minibank2015-services/src/main/java/org/mycontrib/generic/persistence/AbstractGenericDaoJpaImpl.java
+// avec String-data
+
 //@Component
 @Repository //id par defaut = blagueDaoImpl
 @Transactional
-public class BlagueDaoImpl implements BlagueDao {
+public class BlagueDaoImplV1 implements BlagueDaoV1 {
 	
 	//@Autowired
 	//private DataSource dataSource; //utile pour dao codé avec JDBC
