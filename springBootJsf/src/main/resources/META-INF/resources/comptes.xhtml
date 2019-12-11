@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:body>
-   <h:dataTable value="#{compteMBean.comptes}" var="cpt">
+   <h:dataTable border="1" value="#{compteMBean.comptes}" var="cpt">
       <h:column>
           <f:facet name="header">numero</f:facet>
           <h:outputText  value="#{cpt.numero}"/>
