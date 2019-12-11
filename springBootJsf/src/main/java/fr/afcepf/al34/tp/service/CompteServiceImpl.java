@@ -26,4 +26,31 @@ public class CompteServiceImpl implements CompteService {
 		return compteDao.save(cpt);
 	}
 
+	@Override
+	public void transferer(long numCptDeb, long numCptCred, double montant) {
+		try {
+			Compte cptDeb = compteDao.findById(numCptDeb).get();
+			cptDeb.setSolde(cptDeb.getSolde()-montant);
+			compteDao.save(cptDeb);
+			
+			Compte cptCred = compteDao.findById(numCptCred).get();
+			cptCred.setSolde(cptCred.getSolde()+montant);
+			compteDao.save(cptCred);
+		} catch (Exception e) {
+			//+eventuel ajout d'une ligne de log via logger
+			throw new RuntimeException("echec transfert",e);
+			//throw new MyServiceException("echec transfert",e); //héritant de RuntimeException
+		}
+	}
+
+	@Override
+	public List<Compte> comptesDuClient(long numClient) {
+		return compteDao.findByClientNumero(numClient);
+	}
+
+	@Override
+	public Compte rechercherCompteParNumero(long numCpt) {
+		return compteDao.findById(numCpt).orElse(null);
+	}
+
 }

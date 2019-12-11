@@ -22,8 +22,13 @@ public class VirementMBean {
 	private Long numCptCred;
 	private Double montant;
 	
+	private String message="";
+	
 	@Inject //ou @Autowired
 	private CompteService compteService;
+	
+	@Inject //ou @Autowired
+	private CompteMBean compteMBean;
 	
 	
 	@PostConstruct
@@ -32,7 +37,15 @@ public class VirementMBean {
 	}
 	
 	public String doVirement() {
-		//...
-		return "comptes.xhtml"; //naviguer vers liste des comptes à jour
+		String suite=null;
+		try {
+			compteService.transferer(numCptDeb, numCptCred, montant);
+			suite=compteMBean.doRecupComptesDuClient();
+			//suite = "comptes.xhtml"; //naviguer vers liste des comptes à jour
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.message=e.getMessage();
+		}
+		return suite;
 	}
 }

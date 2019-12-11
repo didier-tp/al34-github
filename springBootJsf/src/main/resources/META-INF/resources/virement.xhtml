@@ -8,13 +8,18 @@
 
 <h:body>
     <h:form>
-        numCptDeb:<h:selectOneMenu value="#{viremenMBean.mumCptDeb}"  >
+        numCptDeb:<h:selectOneMenu value="#{virementMBean.numCptDeb}"  >
            <f:selectItems value="#{compteMBean.comptes}" var="cpt"
                           itemValue="#{cpt.numero}" itemLabel="#{cpt.numero}"/>
-        </h:selectOneMenu>
-        numCptCred: ...
-        montant : <h:inputText value="#{viremenMBean.montant}" /> <br/>
-        //...
+        </h:selectOneMenu> <br/>
+        numCptCred: <h:selectOneMenu value="#{virementMBean.numCptCred}"  >
+           <f:selectItems value="#{compteMBean.comptes}" var="cpt"
+                          itemValue="#{cpt.numero}" itemLabel="#{cpt.numero}"/>
+        </h:selectOneMenu> <br/>
+        montant : <h:inputText value="#{virementMBean.montant}" /> <br/>
+         <h:commandButton value="effectuer virement" 
+                        action="#{virementMBean.doVirement}"/><br/>
+        <h:outputText value="#{virementMBean.message}" />
     </h:form> 
   
 </h:body>

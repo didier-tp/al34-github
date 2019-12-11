@@ -31,7 +31,7 @@ public class CompteMBean {
 	}
 	
 	public String doRecupComptesDuClient() {
-		this.comptes = this.compteService.rechercherComptesDuClient(this.numClient);
+		this.comptes = this.compteService.comptesDuClient(this.numClient);
 		return "comptes.xhtml";
 	}
 }
