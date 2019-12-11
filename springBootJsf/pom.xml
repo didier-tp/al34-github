@@ -103,7 +103,17 @@
                 <groupId>org.joinfaces</groupId>
                 <artifactId>joinfaces-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+      
+		  <plugin>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-maven-plugin</artifactId>
+			    <!-- a declencher via mvn install ou bien mvn package -->
+			    <configuration>
+			        <mainClass>fr.afcepf.al34.tp.MySpringBootApplication</mainClass>
+                    <layout>ZIP</layout>
+			    </configuration>
+			</plugin>
+		</plugins>
     </build>
   
  
