@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import fr.afcepf.al34.tp.entity.Compte;
@@ -14,24 +14,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 @Getter @Setter @NoArgsConstructor
-public class CompteMBean {
+public class VirementMBean {
 	
-	private Long numClient;
+	private Long numCptDeb;
+	private Long numCptCred;
+	private Double montant;
 	
 	@Inject //ou @Autowired
 	private CompteService compteService;
 	
-	private List<Compte> comptes;//à afficher dans h:dataTable
-
+	
 	@PostConstruct
 	public void init() {
-		//this.comptes = this.compteService.rechercherTousLesComptes();
+		
 	}
 	
-	public String doRecupComptesDuClient() {
-		this.comptes = this.compteService.rechercherComptesDuClient(this.numClient);
-		return "comptes.xhtml";
+	public String doVirement() {
+		//...
+		return "comptes.xhtml"; //naviguer vers liste des comptes à jour
 	}
 }
