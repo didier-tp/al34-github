@@ -1,5 +1,7 @@
 package fr.afcepf.al34.tp.web;
 
+import java.util.Date;
+
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -23,6 +25,7 @@ public class XyMBean {
 	
 	private String data;
 	private String s;
+	private Date date;
 	
 	//@Autowired
 	@Inject
@@ -35,7 +38,7 @@ public class XyMBean {
 	}
 	
 	public String doDo() {
-		System.out.println("doDo() , s="+s);
+		System.out.println("doDo() , s="+s +  " date="+date.toString());
 		return null;
 	}
 	
