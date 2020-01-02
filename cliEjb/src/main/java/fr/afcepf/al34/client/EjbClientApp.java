@@ -2,6 +2,13 @@ package fr.afcepf.al34.client;
 
 
 
+import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+import org.wildfly.naming.client.WildFlyInitialContextFactory;
+
 import fr.afcepf.al34.dto.ResCalculTva;
 import fr.afcepf.al34.itf.ICalculTva;
 
@@ -12,9 +19,28 @@ public class EjbClientApp {
 			String machineServeur = "localhost"; //ou "192.168.xx.yy"
 			//192.168.102.183 ,  102.38 , ....
 			
-			String nomLogiqueEjbCalculateur= "....";
+			Properties props = new Properties();//java.util
+			//Context et InitialContext de javax.naming (JNDI)
+			
+			props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+			
+			
+			props.put(Context.INITIAL_CONTEXT_FACTORY,WildFlyInitialContextFactory.class.getName()
+		    			/*"org.jboss.naming.remote.client.InitialContextFactory"*/);
+			props.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+					// remote://localhost:4447 for Jboss7.1 , http-remoting://localhost:8080 for wildfly 8,9
+			props.put(Context.SECURITY_PRINCIPAL, "guest"); // username : "admin" , "guest" , "..."
+			props.put(Context.SECURITY_CREDENTIALS, "guest007"); //password : "pwd", "guest007"
+					//avec utilisateur ajouté via la commande JBOSS_7_HOME/bin/add-user
+					//et roles associés admin,guest,.... sur partie "ApplicationRealm" .
+			props.put("jboss.naming.client.ejb.context", true); //indispensable pour accès @Remote
+			Context jndiContext = new InitialContext(props);
+			
+			//NB: ce nom logique (respectant la norme JEE6) s'affiche dans la console jboss
+			//lors du démarrage du projet servEjb
+			String nomLogiqueEjbCalculateur= "ejb:servEjb/CalculTvaImpl!fr.afcepf.al34.itf.ICalculTva";
 			//connection à l'objet distant RMI via son nom logique
-			ICalculTva proxyCalculateurTva = null;
+			ICalculTva proxyCalculateurTva = (ICalculTva) jndiContext.lookup(nomLogiqueEjbCalculateur);
 			//appels de méthodes à distance (via le réseau):
 			double tva= proxyCalculateurTva.tva(200.0, 20.0);
 			String auteur = proxyCalculateurTva.getAuteur();
