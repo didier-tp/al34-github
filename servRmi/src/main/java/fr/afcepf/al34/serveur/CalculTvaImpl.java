@@ -3,6 +3,7 @@ package fr.afcepf.al34.serveur;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import fr.afcepf.al34.dto.ResCalculTva;
 import fr.afcepf.al34.itf.ICalculTva;
 
 public class CalculTvaImpl extends UnicastRemoteObject implements ICalculTva {
@@ -22,6 +23,11 @@ public class CalculTvaImpl extends UnicastRemoteObject implements ICalculTva {
 
 	public String getAuteur() throws RemoteException {
 		return "didier / formateur fou";
+	}
+
+	public ResCalculTva tvaEtTtc(double ht, double tauxTva) throws RemoteException {
+		double tva  = this.tva(ht, tauxTva);
+		return new ResCalculTva(tva,ht + tva);
 	}
 
 }
