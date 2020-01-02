@@ -2,7 +2,14 @@ package fr.afcepf.al34.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 //objet de donnees vehicule via RMI = doit absolument etre Serializable
+@XmlType(namespace="http://dto.al34.afcepf.fr/")
+@XmlRootElement(name="resCalculTva")
+//namespace par defaut = "http:// package_java_en_verlan /"
+// "toc, toc, toc ! qui est ce ? une poule qui parle en verlan "
 public class ResCalculTva implements Serializable{
 
 	private static final long serialVersionUID = 1L;

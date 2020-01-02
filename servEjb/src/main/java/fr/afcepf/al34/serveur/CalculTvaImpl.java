@@ -14,7 +14,7 @@ import fr.afcepf.al34.itf.ICalculTva;
 //http://localhost:8080/servEjb/CalculTvaImpl?wsdl
 
 @Stateless
-@Remote //pour access rmi , ici ou bien sur l'interface
+//@Remote //pour access rmi , ici ou bien sur l'interface
 @WebService(endpointInterface = "fr.afcepf.al34.itf.ICalculTva") //pour access soap
 //@Remote peut cohabiter avec @WebService
 public class CalculTvaImpl  implements ICalculTva {

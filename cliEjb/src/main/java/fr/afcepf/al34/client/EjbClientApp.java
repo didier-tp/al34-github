@@ -7,8 +7,6 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import org.wildfly.naming.client.WildFlyInitialContextFactory;
-
 import fr.afcepf.al34.dto.ResCalculTva;
 import fr.afcepf.al34.itf.ICalculTva;
 
@@ -25,8 +23,8 @@ public class EjbClientApp {
 			props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 			
 			
-			props.put(Context.INITIAL_CONTEXT_FACTORY,WildFlyInitialContextFactory.class.getName()
-		    			/*"org.jboss.naming.remote.client.InitialContextFactory"*/);
+			props.put(Context.INITIAL_CONTEXT_FACTORY,/*WildFlyInitialContextFactory.class.getName()*/
+		    			"org.jboss.naming.remote.client.InitialContextFactory");
 			props.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
 					// remote://localhost:4447 for Jboss7.1 , http-remoting://localhost:8080 for wildfly 8,9
 			props.put(Context.SECURITY_PRINCIPAL, "guest"); // username : "admin" , "guest" , "..."

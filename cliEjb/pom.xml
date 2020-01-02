@@ -20,18 +20,19 @@
       <version>0.0.1-SNAPSHOT</version>
   </dependency>
 
-	<dependency>
-	    <groupId>org.wildfly</groupId>
-	    <artifactId>wildfly-client-all</artifactId>
-	    <version>16.0.0.Final</version>
-	</dependency> 
-	
-	
 <!-- 	<dependency> -->
-<!--     	<groupId>org.jboss.as</groupId> -->
-<!--     	<artifactId>jboss-as-client-all</artifactId> -->
-<!--     	<version>7.2.1.Final-redhat-10</version> -->
-<!-- 	</dependency> -->
+<!-- 	    <groupId>org.wildfly</groupId> -->
+<!-- 	    <artifactId>wildfly-client-all</artifactId> -->
+<!--         <version>16.0.0.Final</version> -->
+<!-- 	    <version>10.1.0.Final</version> -->
+<!-- 	</dependency>  -->
+	
+	
+<dependency>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-ejb-client</artifactId>
+    <version>4.0.9.Final</version>
+</dependency>
   
   
   </dependencies>
