@@ -3,9 +3,9 @@ package fr.afcepf.al34.serveur;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import fr.afcepf.al34.itf.ICalulTva;
+import fr.afcepf.al34.itf.ICalculTva;
 
-public class CalculTvaImpl extends UnicastRemoteObject implements ICalulTva {
+public class CalculTvaImpl extends UnicastRemoteObject implements ICalculTva {
 
 	protected CalculTvaImpl() throws RemoteException {
 		super(); //appel indispensable du constructeur de UnicastRemoteObject

@@ -3,4 +3,17 @@
   <groupId>fr.afcepf.al34</groupId>
   <artifactId>cliRmi</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  
+  <dependency>
+      <groupId>fr.afcepf.al34</groupId>
+      <artifactId>servRmi</artifactId>
+      <!-- ou mieux encore itfRmi : éventuel troisième projet maven
+           avec interfaces distantes -->
+      <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  
+  </dependencies>
+  
 </project>
