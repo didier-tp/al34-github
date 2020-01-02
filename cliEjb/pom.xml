@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.afcepf.al34</groupId>
+  <artifactId>cliEjb</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+  
+  <dependency>
+      <groupId>fr.afcepf.al34</groupId>
+      <artifactId>servEjb</artifactId>
+      <!-- ou mieux encore itfEjb : éventuel troisième projet maven
+           avec interfaces distantes -->
+      <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+
+	<dependency>
+	    <groupId>org.wildfly</groupId>
+	    <artifactId>wildfly-client-all</artifactId>
+	    <version>16.0.0.Final</version>
+	</dependency> 
+	
+	
+<!-- 	<dependency> -->
+<!--     	<groupId>org.jboss.as</groupId> -->
+<!--     	<artifactId>jboss-as-client-all</artifactId> -->
+<!--     	<version>7.2.1.Final-redhat-10</version> -->
+<!-- 	</dependency> -->
+  
+  
+  </dependencies>
+  
+</project>
