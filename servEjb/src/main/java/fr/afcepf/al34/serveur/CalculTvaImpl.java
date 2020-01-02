@@ -11,6 +11,7 @@ import fr.afcepf.al34.itf.ICalculTva;
 //des EJB "@Remote" enregistrés dans la partie "noms logiques JNDI" de JBOSS
 //et aussi pour connaître l'URL de la description WSDL du WS SOAP
 //à tester via soap-ui .
+//http://localhost:8080/servEjb/CalculTvaImpl?wsdl
 
 @Stateless
 @Remote //pour access rmi , ici ou bien sur l'interface
@@ -18,7 +19,7 @@ import fr.afcepf.al34.itf.ICalculTva;
 //@Remote peut cohabiter avec @WebService
 public class CalculTvaImpl  implements ICalculTva {
 
-	protected CalculTvaImpl() {
+	public CalculTvaImpl() {
 	}
 
 	public double tva(double ht, double tauxTva) {
