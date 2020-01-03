@@ -13,6 +13,7 @@ public class SaopClientApp {
 	public static void main(String[] args) {
 		// appeler un WS Soap codé en java (dans le même langage)
 		// on peut se passer de wsimport.
+		//NB: ce code ne fonctionne que si l'interface ICalculTva comporte l'annotation @WebService
 
 		QName SERVICE_NAME = new QName("http://service.ws.al34.afcepf.fr/", "CalculTvaImplService");
 		QName PORT_NAME = new QName("http://service.ws.al34.afcepf.fr/", "CalculTvaImplPort");
