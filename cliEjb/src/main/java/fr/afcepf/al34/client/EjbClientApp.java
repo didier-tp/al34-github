@@ -37,7 +37,8 @@ public class EjbClientApp {
 			
 			//NB: ce nom logique (respectant la norme JEE6) s'affiche dans la console jboss
 			//lors du démarrage du projet servEjb
-			String nomLogiqueEjbCalculateur= "ejb:servEjb/CalculTvaImpl!fr.afcepf.al34.itf.ICalculTva";
+			String nomLogiqueEjbCalculateur= "servEjb/CalculTvaImpl!fr.afcepf.al34.itf.ICalculTva";
+			//ne pas utiliser le préfixe "ejb:" avec cette version/configuration (de Jboss, du client , ...) 
 			//connection à l'objet distant RMI via son nom logique
 			ICalculTva proxyCalculateurTva = (ICalculTva) jndiContext.lookup(nomLogiqueEjbCalculateur);
 			//appels de méthodes à distance (via le réseau):
