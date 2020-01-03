@@ -35,7 +35,7 @@ public class CxfSoapConfig {
  
     // Replaces cxf-servlet.xml
     @Bean
-    // <jaxws:endpoint id="tvaServiceEndpoint" implementor="#convertisseurImpl" address="/convertisseur"/>
+    // <jaxws:endpoint id="tvaServiceEndpoint" implementor="#calculTvaImpl" address="/calculTva	"/>
     public EndpointImpl tvaServiceEndpoint() {
         Bus bus = (Bus) applicationContext.getBean(Bus.DEFAULT_BUS_ID);
         EndpointImpl endpoint = new EndpointImpl(bus, calculTva /* implementor */);
