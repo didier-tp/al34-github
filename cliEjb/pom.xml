@@ -4,13 +4,13 @@
   <artifactId>cliEjb</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-  <repositories>
-     <repository>
-            <id>jboss-ga</id>
-      		<name>jboss ga</name>
-      		<url>https://maven.repository.redhat.com/ga/</url>
-       </repository>
-  </repositories>
+<!--   <repositories> -->
+<!--      <repository> -->
+<!--             <id>jboss-ga</id> -->
+<!--       		<name>jboss ga</name> -->
+<!--       		<url>https://maven.repository.redhat.com/ga/</url> -->
+<!--        </repository> -->
+<!--   </repositories> -->
   
   <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -28,30 +28,15 @@
       <version>0.0.1-SNAPSHOT</version>
   </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.jboss.eap/wildfly-ejb-client-bom -->
-<!-- <dependency>
-    <groupId>org.wildfly</groupId>
-    <artifactId>wildfly-ejb-client-bom</artifactId>
-    <version>18.0.0.Final</version>
-    <type>pom</type>
-   <scope>compile</scope>
-</dependency> -->
-
-<!--   org.wildfly:wildfly-client-all:12.0.0.Final -->
-
 
 <dependency>
     <groupId>org.wildfly</groupId>
     <artifactId>wildfly-client-all</artifactId>
-    <version>18.0.0.Final</version>
+    <version>16.0.0.Final</version>
    <scope>compile</scope>
 </dependency>
 
 
-	
-	
-
-  
   
   </dependencies>
   
