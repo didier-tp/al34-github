@@ -24,8 +24,9 @@ public class EjbClientApp {
 			
 			
 			props.put(Context.INITIAL_CONTEXT_FACTORY,/*WildFlyInitialContextFactory.class.getName()*/
-		    			"org.jboss.naming.remote.client.InitialContextFactory");
-			props.put(Context.PROVIDER_URL, "http://localhost:8080");
+		    			/*"org.jboss.naming.remote.client.InitialContextFactory"*/
+					    "org.wildfly.naming.client.WildFlyInitialContextFactory");
+			props.put(Context.PROVIDER_URL, "remote+http://localhost:8080");
 					// remote://localhost:4447 for Jboss7.1 , http-remoting://localhost:8080 for wildfly 8,9
 			props.put(Context.SECURITY_PRINCIPAL, "guest"); // username : "admin" , "guest" , "..."
 			props.put(Context.SECURITY_CREDENTIALS, "guest007"); //password : "pwd", "guest007"
