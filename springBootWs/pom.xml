@@ -21,6 +21,12 @@
     <dependencies>
     
     <dependency>
+        <groupId>fr.afcepf.al34</groupId>
+        <artifactId>springBootWsItf</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
 	    <groupId>org.apache.cxf</groupId>
 	    <artifactId>cxf-rt-frontend-jaxws</artifactId>
 	    <version>3.3.1</version>
