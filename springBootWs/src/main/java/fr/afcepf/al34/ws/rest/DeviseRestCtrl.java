@@ -3,6 +3,7 @@ package fr.afcepf.al34.ws.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,13 @@ public class DeviseRestCtrl {
 	@PostMapping(value="")
 	public Devise postDevise(@RequestBody Devise devise) {
 		return deviseService.sauvegarderDevise(devise);
+	}
+	
+	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
+	//à tester via PostMan ou un équivalent
+	@DeleteMapping(value="/{codeDevise}")
+	public void deleteDeviseByCode(@PathVariable("codeDevise")  String code){
+		deviseService.supprimerDevise(code);
 	}
 
 }
