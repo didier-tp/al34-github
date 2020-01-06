@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,11 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.afcepf.al34.ws.entity.Devise;
-import fr.afcepf.al34.ws.exception.MyEntityNotFoundException;
 import fr.afcepf.al34.ws.service.DeviseService;
 
 @RestController
@@ -49,7 +48,8 @@ public class DeviseRestCtrl {
 	public Devise postDevise(@RequestBody Devise devise) {
 		return deviseService.sauvegarderDevise(devise);
 	}
-	
+	/*
+	// Version techniquement correcte (au sens HTTP) MAIS SANS IDEMPOTENCE 
 	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
 	@DeleteMapping(value="/{codeDevise}")
 	public void deleteDeviseByCode(@PathVariable("codeDevise")  String code)
@@ -57,7 +57,8 @@ public class DeviseRestCtrl {
 		     deviseService.supprimerDevise(code); //renvoi code 404 en cas d'erreur
 		     //car annotation @ResponseStatus(HttpStatus.NOT_FOUND) au dessus de 
 		     //la classe MyEntityNotFoundException
-	}
+	}*/
+	
 	
 	/*
 	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
@@ -74,5 +75,22 @@ public class DeviseRestCtrl {
 		}
 	}
 	*/
+	
+	// version avec IDEMPOTENCE (retour toujours au même format)
+	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
+	//à tester via PostMan ou un équivalent
+	@DeleteMapping(value="/{codeDevise}")
+	public ResponseEntity<String> deleteDeviseByCode(@PathVariable("codeDevise")  String code){
+			try {
+				deviseService.supprimerDevise(code);
+				return new ResponseEntity<String>("suppression bien effectuee" , 
+						                           HttpStatus.OK); 
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ResponseEntity<String>("devise déjà supprimée ou inexistante",
+						                    HttpStatus.OK);
+				
+			}
+		}
 
 }
