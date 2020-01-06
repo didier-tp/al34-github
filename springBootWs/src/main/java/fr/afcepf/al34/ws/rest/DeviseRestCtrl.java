@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +36,14 @@ public class DeviseRestCtrl {
 			return deviseService.rechercherDeviseParChangeMini(changeMini);
 		else
 			return deviseService.rechercherToutesDevises();
+	}
+	//http://localhost:8080/springBootWs/devise-api/public/devise appelé en mode POST
+	//avec { "code" : "SIN" , "name":"monnaieSinge" , "change" :9999 }
+	//dans la partie "body" (invisible) de la requête entrante HTTP
+	//à tester via le logiciel PostMan ou un equivalent
+	@PostMapping(value="")
+	public Devise postDevise(@RequestBody Devise devise) {
+		return deviseService.sauvegarderDevise(devise);
 	}
 
 }
