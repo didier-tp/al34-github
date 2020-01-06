@@ -32,5 +32,9 @@ public class DeviseServiceImpl implements DeviseService {
 	public void supprimerDevise(String code) {
 		deviseDao.deleteById(code);
 	}
+	@Override
+	public List<Devise> rechercherToutesDevises() {
+		return (List<Devise>) deviseDao.findAll();
+	}
 
 }
