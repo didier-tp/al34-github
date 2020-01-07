@@ -11,7 +11,15 @@ window.onload=function(){
 }
 
 function cbGererResultat(texteReponse){
-	divRes.innerHTML = texteReponse;
+	//divRes.innerHTML = texteReponse;
+	var listeDeviseJs = JSON.parse(texteReponse /* au format json string */)
+	var htmlListeDevises = "<ul>"
+		for(i=0; i<listeDeviseJs.length ; i++){
+			htmlListeDevises = htmlListeDevises + "<li>" + listeDeviseJs[i].name + " , " 
+			                                    + listeDeviseJs[i].change + "</li>";
+		}
+	htmlListeDevises = htmlListeDevises + "</ul>";
+	divRes.innerHTML= htmlListeDevises; 
 }
 
 function makeAjaxGetRequest(url,callback) {
