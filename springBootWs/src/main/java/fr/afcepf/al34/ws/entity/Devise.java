@@ -1,8 +1,13 @@
 package fr.afcepf.al34.ws.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +23,10 @@ public class Devise {
 	
 	@Column(name="d_change")
 	private Double change; // nb ... pour un dollar
-	
+
+	@OneToMany(mappedBy = "devise")
+	@JsonIgnore
+	private List<Pays> pays;
 	
 	public Devise(String code, String name, Double change) {
 		super();
