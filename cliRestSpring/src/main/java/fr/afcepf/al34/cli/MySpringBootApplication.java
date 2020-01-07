@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import fr.afcepf.al34.cli.dto.DeviseDto;
+import fr.afcepf.al34.cli.service.DeviseServiceDelegate;
+
 
 //NB: @SpringBootApplication est un équivalent
 //de @Configuration + @EnableAutoConfiguration + @ComponentScan/current package
@@ -19,5 +22,13 @@ public static void main(String[] args) {
 	//app.setAdditionalProfiles("initData","swagger");
 	ConfigurableApplicationContext context = app.run(args);
 	System.out.println("http://localhost:8282/cliRestSpring");
+	testAppelWsRest();
 }
+
+private static void testAppelWsRest() {
+	DeviseServiceDelegate deviseServiceDelegate = new DeviseServiceDelegate();
+	DeviseDto deviseEur = deviseServiceDelegate.getDeviseByCode("EUR");
+	System.out.println("deviseEur="+deviseEur);
+}
+
 }
