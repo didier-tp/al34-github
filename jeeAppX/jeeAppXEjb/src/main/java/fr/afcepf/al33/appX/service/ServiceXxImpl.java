@@ -1,10 +1,10 @@
 package fr.afcepf.al33.appX.service;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
-//@Local
-@Remote
+@Local
+//@Remote
 @Stateless
 public class ServiceXxImpl implements ServiceXx{
 
