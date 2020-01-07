@@ -17,6 +17,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	
+	// avec <a href="./swagger-ui.html">description api rest via swagger 2</a>
+	// dans index.html
+	
+	//et 	app.setAdditionalProfiles("initData","swagger");
+	//dans le main()
+	
+	//et dépendances springfox-swagger2 , springfox-swagger-ui dans pom.xml
+	
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
