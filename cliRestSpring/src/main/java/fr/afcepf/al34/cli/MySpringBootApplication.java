@@ -1,5 +1,7 @@
 package fr.afcepf.al34.cli;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -38,6 +40,20 @@ private static void testAppelWsRest(ApplicationContext contextSpring) {
 	IDeviseService deviseServiceDelegate = contextSpring.getBean(IDeviseService.class); //équivalent de @Autowired
 	DeviseDto deviseEur = deviseServiceDelegate.getDeviseByCode("EUR");
 	System.out.println("** deviseEur="+deviseEur);
+	
+	DeviseDto nouvelleDevise = new DeviseDto("sc", "Super Credit Intergalactique" , 0.01);
+	DeviseDto deviseSauvegardee = deviseServiceDelegate.postDevise(nouvelleDevise);
+	System.out.println("deviseSauvegardee="+deviseSauvegardee);
+	
+	List<DeviseDto> listeDevises = deviseServiceDelegate.getAllDevises();
+	System.out.println("listeDevises="+listeDevises);
+	
+	deviseServiceDelegate.deleteDevise("sc");
+	
+	//vérif suppression:
+	DeviseDto deviseScSupprimee = deviseServiceDelegate.getDeviseByCode("sc");
+	System.out.println("deviseScSupprimee="+deviseScSupprimee);
+	
 }
 
 }
