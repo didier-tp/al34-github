@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.afcepf.al34.ws.dto.ResDelete;
 import fr.afcepf.al34.ws.entity.Devise;
 import fr.afcepf.al34.ws.service.DeviseService;
 import io.swagger.annotations.Api;
@@ -78,18 +79,18 @@ public class DeviseRestCtrl {
 	}
 	*/
 	
-	// version avec IDEMPOTENCE (retour toujours au même format)
+	// version avec IDEMPOTENCE (retour toujours au même format et regulier si plusieurs appels de suite)
 	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
 	//à tester via PostMan ou un équivalent
 	@DeleteMapping(value="/{codeDevise}")
-	public ResponseEntity<String> deleteDeviseByCode(@PathVariable("codeDevise")  String code){
+	public ResponseEntity<ResDelete> deleteDeviseByCode(@PathVariable("codeDevise")  String code){
 			try {
 				deviseService.supprimerDevise(code);
-				return new ResponseEntity<String>("suppression bien effectuee" , 
+				return new ResponseEntity<ResDelete>( new ResDelete("suppression bien effectuee") , 
 						                           HttpStatus.OK); 
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new ResponseEntity<String>("devise déjà supprimée ou inexistante",
+				return new ResponseEntity<ResDelete>(new ResDelete("devise déjà supprimée ou inexistante"),
 						                    HttpStatus.OK);
 				
 			}
