@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,6 +23,7 @@ public class Devise {
 	private String name; // "euro" , "dollar" , "yen" , "livre"
 	
 	@Column(name="d_change")
+	@Min(value=0 , message="change mini=0")
 	private Double change; // nb ... pour un dollar
 
 	@OneToMany(mappedBy = "devise")
