@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.afcepf.al34.ws.entity.Devise;
 import fr.afcepf.al34.ws.service.DeviseService;
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping(value="/devise-api/public/devise" , headers="Accept=application/json")
+@Api(tags = { "My REST Devise api (public part)" })
 public class DeviseRestCtrl {
 	
 	@Autowired
