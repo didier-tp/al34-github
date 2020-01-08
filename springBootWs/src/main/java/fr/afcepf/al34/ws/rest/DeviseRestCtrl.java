@@ -20,10 +20,16 @@ import fr.afcepf.al34.ws.dto.ResDelete;
 import fr.afcepf.al34.ws.entity.Devise;
 import fr.afcepf.al34.ws.service.DeviseService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value="/devise-api/public/devise" , headers="Accept=application/json")
 @Api(tags = { "My REST Devise api (public part)" })
+/**
+ * classe DeviseRestCtrl que j'aime
+ * @author formation
+ *
+ */
 public class DeviseRestCtrl {
 	
 	@Autowired
@@ -31,6 +37,12 @@ public class DeviseRestCtrl {
 	
 	//url complete : http://localhost:8080/springBootWs/devise-api/public/devise/EUR
 	//@RequestMapping(value="/{codeDevise}" , method=RequestMethod.GET)
+	/**
+	 * rechercher une devise via son code
+	 * @param code code d'une devise (ex: "EUR" , "USD" , ...)
+	 * @return Devise recherchée
+	 */
+	@ApiOperation(value = "getDeviseByCode 2 Le retour")
 	@GetMapping(value="/{codeDevise}")
 	public Devise getDeviseByCode(@PathVariable("codeDevise")  String code){
 		return deviseService.rechercherDeviseParCode(code);

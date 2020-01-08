@@ -18,6 +18,6 @@ public static void main(String[] args) {
 	SpringApplication app = new SpringApplication(MySpringBootApplication.class);
 	app.setAdditionalProfiles("initData","swagger");
 	ConfigurableApplicationContext context = app.run(args);
-	System.out.println("http://localhost:8080/springBootWs");
+	System.out.println("http://localhost:8383/springBootWs");
 }
 }
