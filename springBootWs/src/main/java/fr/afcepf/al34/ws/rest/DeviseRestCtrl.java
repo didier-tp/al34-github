@@ -93,21 +93,5 @@ public class DeviseRestCtrl {
 	}
 	*/
 	
-	// version avec IDEMPOTENCE (retour toujours au même format et regulier si plusieurs appels de suite)
-	//en mode DELETE, url=http://localhost:8080/springBootWs/devise-api/public/devise/JPY
-	//à tester via PostMan ou un équivalent
-	@DeleteMapping(value="/{codeDevise}")
-	public ResponseEntity<ResDelete> deleteDeviseByCode(@PathVariable("codeDevise")  String code){
-			try {
-				deviseService.supprimerDevise(code);
-				return new ResponseEntity<ResDelete>( new ResDelete("suppression bien effectuee") , 
-						                           HttpStatus.OK); 
-			} catch (Exception e) {
-				e.printStackTrace();
-				return new ResponseEntity<ResDelete>(new ResDelete("devise déjà supprimée ou inexistante"),
-						                    HttpStatus.OK);
-				
-			}
-		}
-
+	
 }
