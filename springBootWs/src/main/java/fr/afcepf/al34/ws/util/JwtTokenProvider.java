@@ -24,10 +24,10 @@ public class JwtTokenProvider {
     
     //private String DEFAULT_SPRING_SECURITY_ROLE_PREFIX="ROLE_";
 
-    @Value("${app.jwtSecret}") // in application.properties
+    //@Value("${app.jwtSecret}") // in application.properties
     private String jwtSecret = "MyJWTSuperSecretKey"; //by default (example)
 
-    @Value("${app.jwtExpirationInMs}") // in application.properties
+    //@Value("${app.jwtExpirationInMs}") // in application.properties
     private int jwtExpirationInMs =  30*60*1000 ;//pour 30 minutes (example) par defaut
 
     public String generateToken(Authentication authentication) {
