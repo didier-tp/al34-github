@@ -1,5 +1,7 @@
 package fr.afcepf.al33.appX.web;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -50,6 +52,19 @@ public class XxMBean {
 		//DeviseServiceDelegate deviseServiceDelegate = new DeviseServiceDelegate();
 		DeviseDto deviseDto = deviseServiceDelegate.getDeviseByCode("USD");
 		System.out.println("deviseDto="+deviseDto);
+		
+		DeviseDto nouvelleDevise = new DeviseDto("sc", "Super Credit Intergalactique" , 0.01);
+		DeviseDto deviseSauvegardee = deviseServiceDelegate.postDevise(nouvelleDevise);
+		System.out.println("deviseSauvegardee="+deviseSauvegardee);
+		
+		List<DeviseDto> listeDevises = deviseServiceDelegate.getAllDevises();
+		System.out.println("listeDevises="+listeDevises);
+		
+		deviseServiceDelegate.deleteDevise("sc");
+		
+		//vérif suppression:
+		DeviseDto deviseScSupprimee = deviseServiceDelegate.getDeviseByCode("sc");
+		System.out.println("deviseScSupprimee="+deviseScSupprimee);
 	}
 	/*
 	public String doConversion() {

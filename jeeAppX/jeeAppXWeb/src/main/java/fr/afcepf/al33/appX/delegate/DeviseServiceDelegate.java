@@ -1,10 +1,12 @@
 package fr.afcepf.al33.appX.delegate;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
@@ -19,27 +21,35 @@ public class DeviseServiceDelegate implements IDeviseService{
 
 	@Override
 	public DeviseDto getDeviseByCode(String code) {
-		WebTarget deviseTarget = jaxrs2client.target(baseUrl).path(code);
-		return deviseTarget.request(MediaType.APPLICATION_JSON_TYPE)
-		            .get().readEntity(DeviseDto.class);
+		try {
+			WebTarget deviseTarget = jaxrs2client.target(baseUrl).path(code);
+			return deviseTarget.request(MediaType.APPLICATION_JSON_TYPE)
+			            .get().readEntity(DeviseDto.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public List<DeviseDto> getAllDevises() {
-		// TODO Auto-generated method stub
-		return null;
+		WebTarget deviseTarget = jaxrs2client.target(baseUrl);
+		return Arrays.asList(deviseTarget.request(MediaType.APPLICATION_JSON_TYPE)
+		            .get().readEntity(DeviseDto[].class));
 	}
 
 	@Override
 	public DeviseDto postDevise(DeviseDto devise) {
-		// TODO Auto-generated method stub
-		return null;
+		WebTarget deviseTarget = jaxrs2client.target(baseUrl);
+		return deviseTarget.request(MediaType.APPLICATION_JSON_TYPE)
+		            .post(Entity.entity(devise, MediaType.APPLICATION_JSON_TYPE))
+		            .readEntity(DeviseDto.class);
 	}
 
 	@Override
 	public void deleteDevise(String code) {
-		// TODO Auto-generated method stub
-		
+		WebTarget deviseTarget = jaxrs2client.target(baseUrl).path(code);
+		deviseTarget.request().delete();
 	}
 
 }
