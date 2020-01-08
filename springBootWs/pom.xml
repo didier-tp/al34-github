@@ -60,6 +60,12 @@
 			<!-- utile pour class WelcomePageRedirect implements WebMvcConfigurer  
 			     et pour event WS REST -->
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
         
         
         
