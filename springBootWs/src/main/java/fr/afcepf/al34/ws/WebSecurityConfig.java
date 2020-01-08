@@ -1,13 +1,14 @@
 package fr.afcepf.al34.ws;
 
 	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.context.annotation.Bean;
-	import org.springframework.context.annotation.Configuration;
-	import org.springframework.security.authentication.AuthenticationManager;
-	import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-	import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-	import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-	import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 	@Configuration
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -45,11 +46,20 @@ package fr.afcepf.al34.ws;
 	    	.antMatchers("/devise-api/private/**").authenticated()
 			.and().formLogin().permitAll()
 			.and().cors() //enable CORS (avec @CrossOrigin sur class @RestController)
-			.and().csrf().disable();
+			.and().csrf().disable()
+			// If the user is not authenticated, returns 401
+			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+			// This is a stateless application, disable sessions
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //.and()
+			// Custom filter for authenticating users using tokens
+			//.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 			
 			//.and().httpBasic() 
 			
 	    }
+	    
+	    @Autowired
+	    private MyNoAuthenticationEntryPoint unauthorizedHandler;
 	    
 	    @Bean
 	    public BCryptPasswordEncoder passwordEncoder() {
