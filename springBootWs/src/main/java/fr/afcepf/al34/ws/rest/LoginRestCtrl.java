@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.afcepf.al34.ws.dto.LoginRequest;
 import fr.afcepf.al34.ws.dto.LoginResponse;
+import fr.afcepf.al34.ws.util.JwtTokenProvider;
 
 @RestController
 @RequestMapping(value="/devise-api/public/login" , headers="Accept=application/json")
@@ -22,6 +23,8 @@ public class LoginRestCtrl {
 	@Autowired
     private AuthenticationManager authenticationManager;
 	
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
 
 	//http://localhost:8383/springBootWs/devise-api/public/login
 	//avec { "username" : "user1" , "password" : "pwd1" }
@@ -42,7 +45,7 @@ public class LoginRestCtrl {
 		        ));//authenticate() soulève une exception si mauvais username ou password
 			loginResponse.setOk(true);
 			loginResponse.setMessage("successful login");
-			loginResponse.setToken("jeton_qui_va_bien");
+			loginResponse.setToken(jwtTokenProvider.generateToken(authentication));
 		}catch(Exception ex) {
 			loginResponse.setOk(false);
 			loginResponse.setMessage("login failed");
