@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import fr.afcepf.al34.ws.util.JwtAuthenticationFilter;
 
 	@Configuration
 	public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -50,13 +53,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 			// If the user is not authenticated, returns 401
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			// This is a stateless application, disable sessions
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //.and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			// Custom filter for authenticating users using tokens
-			//.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-			
-			//.and().httpBasic() 
-			
+			.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+					
 	    }
+	    
+	    @Autowired
+	    private JwtAuthenticationFilter jwtAuthenticationFilter;
 	    
 	    @Autowired
 	    private MyNoAuthenticationEntryPoint unauthorizedHandler;
