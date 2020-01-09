@@ -29,7 +29,7 @@ public class MyOtherJmsAppSendingMessage extends SpringBootServletInitializer {
 			
 			TextMessage msg = session.createTextMessage();
 			ObjectMapper jacksonObjectMapper = new ObjectMapper();
-			MyData data = new MyData("ref1",123.456);
+			MyData data = new MyData("ref2",143.456);
 			msg.setText(jacksonObjectMapper.writeValueAsString(data));
 			msg.setStringProperty("_type", data.getClass().getName());
 			
