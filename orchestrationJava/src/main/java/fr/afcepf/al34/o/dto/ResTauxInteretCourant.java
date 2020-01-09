@@ -1,5 +1,12 @@
 package fr.afcepf.al34.o.dto;
 
-public class ResTauxInteretCourant {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter @Setter @NoArgsConstructor @ToString()
+public class ResTauxInteretCourant {
+	private Integer nbMois ;
+	private Double tauxAnnuelPct ;
 }
