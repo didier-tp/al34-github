@@ -1351,7 +1351,7 @@
 											"top": 117,
 											"width": 327.69775390625,
 											"height": 13,
-											"text": "«ws, rest»"
+											"text": "«ws-rest-delegate»"
 										},
 										{
 											"_type": "LabelView",
@@ -1550,7 +1550,7 @@
 											"top": 301,
 											"width": 257.54345703125,
 											"height": 13,
-											"text": "«ws, rest»"
+											"text": "«ws-rest-delegate»"
 										},
 										{
 											"_type": "LabelView",
@@ -1965,7 +1965,7 @@
 											"top": 573,
 											"width": 354.42138671875,
 											"height": 13,
-											"text": "«ws, rest»"
+											"text": "«ws-rest-delegate»"
 										},
 										{
 											"_type": "LabelView",
@@ -2579,7 +2579,7 @@
 								"$ref": "AAAAAAFvjucGBIfgpH0="
 							},
 							"name": "ServiceTauxInteret",
-							"stereotype": "ws, rest",
+							"stereotype": "ws-rest-delegate",
 							"operations": [
 								{
 									"_type": "UMLOperation",
@@ -2620,7 +2620,7 @@
 								"$ref": "AAAAAAFvjucGBIfgpH0="
 							},
 							"name": "ServiceFraisDossier",
-							"stereotype": "ws, rest",
+							"stereotype": "ws-rest-delegate",
 							"operations": [
 								{
 									"_type": "UMLOperation",
@@ -2698,7 +2698,7 @@
 								"$ref": "AAAAAAFvjudL5of6cGs="
 							},
 							"name": "ServiceMensualite",
-							"stereotype": "ws, rest",
+							"stereotype": "ws-rest-delegate",
 							"operations": [
 								{
 									"_type": "UMLOperation",
